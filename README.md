@@ -12,7 +12,7 @@ O projeto conta com um docker-compose para iniciar os serviços necessários ref
 
 ## Como iniciar
 
-## Opção 1 — Docker
+## Docker
 
 Na pasta do repositório:
 
