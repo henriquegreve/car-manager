@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+                http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="relatorio-marcas"
+              pageWidth="595" pageHeight="842"
+              columnWidth="535" leftMargin="30" rightMargin="30"
+              topMargin="30" bottomMargin="30"
+              whenNoDataType="AllSectionsNoDetail"
+              uuid="c3a1e2b4-5678-4abc-9def-000000000001">
+
+    <field name="marca" class="java.lang.String"/>
+    <field name="quantidade" class="java.lang.Long"/>
+
+    <variable name="totalVeiculos" class="java.lang.Long" calculation="Sum">
+        <variableExpression><![CDATA[$F{quantidade}]]></variableExpression>
+    </variable>
+
+    <title>
+        <band height="65" splitType="Stretch">
+            <staticText>
+                <reportElement x="0" y="10" width="535" height="40"
+                               uuid="c3a1e2b4-5678-4abc-9def-000000000002"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="16" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Relatório de Veículos por Marca]]></text>
+            </staticText>
+        </band>
+    </title>
+
+    <columnHeader>
+        <band height="26" splitType="Stretch">
+            <staticText>
+                <reportElement x="0" y="0" width="335" height="26"
+                               backcolor="#3B72AC" forecolor="#FFFFFF" mode="Opaque"
+                               uuid="c3a1e2b4-5678-4abc-9def-000000000003"/>
+                <box>
+                    <pen lineWidth="0.5"/>
+                </box>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" isBold="true"/>
+                    <paragraph leftIndent="8"/>
+                </textElement>
+                <text><![CDATA[Marca]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="335" y="0" width="200" height="26"
+                               backcolor="#3B72AC" forecolor="#FFFFFF" mode="Opaque"
+                               uuid="c3a1e2b4-5678-4abc-9def-000000000004"/>
+                <box>
+                    <pen lineWidth="0.5"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Quantidade]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height="22" splitType="Stretch">
+            <textField>
+                <reportElement x="0" y="0" width="335" height="22"
+                               uuid="c3a1e2b4-5678-4abc-9def-000000000005"/>
+                <box>
+                    <pen lineWidth="0.5"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans"/>
+                    <paragraph leftIndent="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{marca}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="335" y="0" width="200" height="22"
+                               uuid="c3a1e2b4-5678-4abc-9def-000000000006"/>
+                <box>
+                    <pen lineWidth="0.5"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{quantidade}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+
+    <summary>
+        <band height="35" splitType="Stretch">
+            <line>
+                <reportElement x="0" y="5" width="535" height="1"
+                               uuid="c3a1e2b4-5678-4abc-9def-000000000007"/>
+                <graphicElement>
+                    <pen lineWidth="1.0"/>
+                </graphicElement>
+            </line>
+            <staticText>
+                <reportElement x="0" y="10" width="335" height="22"
+                               uuid="c3a1e2b4-5678-4abc-9def-000000000008"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" isBold="true"/>
+                    <paragraph rightIndent="10"/>
+                </textElement>
+                <text><![CDATA[Total de veículos:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="335" y="10" width="200" height="22"
+                               uuid="c3a1e2b4-5678-4abc-9def-000000000009"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{totalVeiculos} != null ? $V{totalVeiculos} : 0L]]></textFieldExpression>
+            </textField>
+        </band>
+    </summary>
+
+</jasperReport>
